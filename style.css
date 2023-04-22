@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.body{
+    background-color: rgb(234, 234, 234);
+    width: 100%;
+
+}
+.global form{
+    border: none;
+    border-right: 4px solid rgb(29, 138, 234);
+    height: 350px;
+    width: 400px;
+    background-color: #fff;
+    box-shadow: 2px 2px rgb(29, 138, 234);
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    margin: 10px ;
+}
+.form input{
+    width: 325px;
+    border: none;
+    border-bottom: 3px solid black;
+}
+
+.global form {
+    position: absolute;
+    left: 50%;
+    top: 25%;
+    transform: translateX(-50%);
+}
+.global p{
+    font-size: 35px;
+    text-align: center;
+}
+.global .button input{
+    position: absolute;
+    left: 25%;
+    width: 50%;
+    background-color: rgb(128, 171, 246);
+}
+.global .button input:hover{
+    background-color: rgb(95, 146, 233);
+    
+}

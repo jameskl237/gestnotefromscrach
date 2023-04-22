@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+}
+form{
+    width: 40%;
+    padding: 20px;
+    border: 1px solid #f1f1f1;
+    background: #fff;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    position: absolute;
+    left: 30%;
+    top: 15%;
+    transform: translate(-50%);
+    border-radius: 50%;
+}
+#Admin,#User{
+   
+    background-color: aqua;
+    color: black;
+    padding: 14px 90px;
+    margin: 8px 0;
+    border-bottom-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-color: black;
+    cursor: pointer;
+    width: 50%;
+    position:relative;
+    left: 120px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+
+
+}
+input[type=submit] :hover{
+    background-color: aqua;
+    color: #234234;
+    
+
+    border: 1px solid #234234;
+}
+body{
+    /*background-color: aqua;*/
+    background-image: url(../img/images1.jpg);
+    background-repeat: no-repeat;
+    background-size:100% ;
+}
+h1 {
+    width: 35%;
+    margin: 0 auto;
+    padding: 10px;
+    text-align: center;
+    border:  white;
+    background-color: rgb(0, 0, 0);
+    color: white;
+}
+p{
+    text-align: center;
+}
+    </style>
+    <title>Connexion</title>
+</head>
+<body>
+<form action="traitement.php" method="post">
+    <h1><b>Mode de Connexion </b></h1><br/><br/>
+    <p>Comment voulez vous vous connecté !? </p><br/><br/>
+    <button  id ='Admin' name = "Admin">Administrateur</button>
+    <br/><br/>
+    <button  id ='User' name ="User">Utilisateur</button>
+    
+
+    </form>
+</body>
+</html>

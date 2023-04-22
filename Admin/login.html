@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="CSS/bootstrap-grid.min.css">
+    <style> 
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        width: 100%;
+    }
+    body{
+        background: aqua;
+    }
+    #container{
+        width: 50%;
+        background-color: white ;
+        position : absolute;
+        /*background-color: white;*/
+        left:40%;
+        top: 25%;
+        transform : translate(-25%); 
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+       /* position : absolute;
+        left : 50%;
+        transform : translate(-25%);  
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);*/ 
+    }
+    form{
+        width:50%;
+        margin-left:20px;
+        position: relative;
+      /*background-color: white;*/
+        left:40%;
+        top: 25%;
+        transform : translate(-35%);
+
+    }
+   
+    #container h1 {
+        width: 38%;
+        margin: 0 auto;
+        padding-bottom: 10px;
+        
+    }
+    input[type=text], input[type=password]
+    {
+    width: 100%;
+    padding: 12px 20px;
+    margin:  8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    }
+    input[type=submit]{
+        background-color: aqua;
+        color: black;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+    }
+    input[type=submit] :hover{
+        background-color: white;
+        color: aqua;
+        border: 1px solid aqua;
+    }
+    </style>
+    <!-- <link rel="shortcut icon" href="img/uy1.ico" /> -->
+    <title>LOGIN</title>
+</head>
+<body>
+
+    <div id ="container">
+        <form action="traitement.php" method="post">
+        <h1>Connexion</h1>
+        <?php
+                if(isset($_GET['erreur'])){
+                $err = $_GET['erreur'];
+                if($err==1 || $err==2)
+                echo "<span style='color:red; text-align:center; '>Utilisateur ou mot de passe incorrect</span>";
+                }
+        ?><br/><br/>
+        <label><b>Adresse email</b></label>
+        <input type ="text" placeholder ="Entrer votre email" name ="useremail" required><br/><br/>
+
+        <label><b>Mot de passe</b></label>
+        <input type ="password" placeholder ="Entrer votre mot de passe " name ="password" required><br/><br/>
+
+        <input type ="submit" id ='submit' value ='LOGIN'>
+
+    
+        </form>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+}
+form{
+    width: 60%;
+    padding: 30px;
+    border: 1px solid #f1f1f1;
+    background: #fff;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    position: absolute;
+    left: 50%;
+    top: 15%;
+    transform: translate(-50%);
+}
+#s1,#s2{
+   
+    background-color: aqua;
+    color: back;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+
+
+}
+input[type=submit] :hover{
+    background-color: aqua;
+    color: #234234;
+    
+
+    border: 1px solid #234234;
+}
+body{
+    background-color: aqua;
+}
+h1 {
+    width: 45%;
+    margin: 0 auto;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid palegoldenrod;
+    background-color: palegoldenrod;
+}
+ </style>
+    <title>Semestres </title>
+</head>
+<body>
+<form action="traitement.php" method="post">
+    <h1><b>Semestres </b></h1><br/><br/>
+
+    <button  id ='s1' name = "s1">Semestre 1</button>
+    <br/><br/>
+    <button  id ='s2' name ="s2">Semestre 2</button>
+    
+
+    </form>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel ="stylesheet" href ="style.css">
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+}
+form{
+    width: 30%;
+    padding: 30px;
+    border: 1px solid #f1f1f1;
+    background: rgba(255, 255, 255, 0.705);
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    position: absolute;
+    left: 50%;
+    top: 15%;
+    transform: translate(-50%);
+    border-radius: 10px;
+}
+#ict,#info,#phy,#ch{
+   
+    background-color: aqua;
+    color: back;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 40%;
+    border-radius: 20px;
+    margin-left: 120px;    
+
+
+}
+input[type=submit] :hover{
+    background-color: aqua;
+    color: #234234;
+    
+
+    border: 1px solid #234234;
+}
+body{
+    background-color: rgb(19, 189, 189);
+}
+h1 {
+    width: 38%;
+    margin: 0 auto;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid palegoldenrod;
+    background-color: palegoldenrod;
+}
+    </style>
+    <title>Filières</title>
+</head>
+<body>
+    
+    <form action="traitement.php" method="post">
+    <h1><b>Filières</b></h1><br/><br/>
+    <button  id ='ict' name = "ict"value ='ICT4D'>ICT For Developpment</button>
+    <br/><br/>
+    <button  id ='info' name ="info" value ='info'>Informatique</button>
+    
+    <br/><br/>
+    <button  id ='phy' name="phy" value ='phy'>Physique</button>
+    
+    <br/><br/>
+    
+    
+    <button  id ='ch' name = "chimie" value ='ch'>Chimie</button>
+    </form>
+</body>
+</html>

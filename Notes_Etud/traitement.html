@@ -1,0 +1,35 @@
+<?php
+include_once('../connect_bd.php');
+
+    if(isset($_POST['ajout'])){
+  
+        $mat = $_POST['mat'];
+        $ue  = $_POST['ue'];
+        $tp  = $_POST['tp'];
+        $cc  = $_POST['cc'];
+        $sn  = $_POST['sn'];
+        echo "$mat,$ue,$tp,$cc,$sn";
+
+        if(!empty( $_POST['mat']) && !empty($_POST['ue']) 
+        && !empty($_POST['tp']) && !empty($_POST['cc']) && !empty($_POST['sn'])  )
+        {
+
+            $requete = $dbco->prepare('INSERT INTO evaluer(id_etudiant,code_ue,tp,cc,sn) VALUES(:id,:ue,:tp,:cc,:sn)');
+            $requete->bindvalue(':id',$mat);
+            $requete->bindvalue(':ue',$ue);
+            $requete->bindvalue(':tp',$tp);
+            $requete->bindvalue(':cc',$cc);
+            $requete->bindvalue(':sn',$sn);
+            $result = $requete->execute();
+            if(!$result){
+                echo " un pb est survenu , l'enregistrement n'a pas été effectué .";
+            }else{
+                echo " <script type = \"text/javascript\"> alert('Vous etes bien enregistré.') </script>";
+                header('Location:note.php');
+            }
+            
+        }else{
+            echo "Tous les champs sont requis . ";
+        }
+    }
+?>

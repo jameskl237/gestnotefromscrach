@@ -1,0 +1,23 @@
+<?php
+
+session_start();
+// Création d'une variable de session filiére 
+// Qui contiendra la filière en fonction du choix de l'utilisateur 
+
+if(isset($_POST['l1']))
+{
+    $_SESSION['niveau'] = 'L1';
+    header('Location: ../semestre/semes.php');
+}
+if(isset($_POST['l2']))
+{
+    $_SESSION['niveau'] = 'L2';
+    header('Location: ../semestre/semes.php');
+}
+if(isset($_POST['l3']))
+{
+    $_SESSION['niveau'] = 'L3';
+    header('Location: ../semestre/semes.php');
+}
+
+?>

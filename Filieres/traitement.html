@@ -1,0 +1,28 @@
+<?php
+
+session_start();
+// Création d'une variable de session filiére 
+// Qui contiendra la filière en fonction du choix de l'utilisateur 
+
+if(isset($_POST['ict']))
+{
+    $_SESSION['filière'] = 1;
+    header('Location: ../Niveau/niveau.php');
+}
+if(isset($_POST['info']))
+{
+    $_SESSION['filière'] = 2;
+    header('Location: ../Niveau/niveau.php');
+}
+if(isset($_POST['phy']))
+{
+    $_SESSION['filière'] = 3;
+    header('Location: ../Niveau/niveau.php');
+}
+if(isset($_POST['chimie']))
+{
+    $_SESSION['filière'] = 4;
+    header('Location: ../Niveau/niveau.php');
+}
+
+?>

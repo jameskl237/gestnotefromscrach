@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <title> Form_Notes </title>
+    <style>
+      body{
+        background-color: aqua;
+      }
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-column-gap: 50px;
+  grid-row-gap: 10px;
+ /* background-color: #2196F3;*/
+  padding: 10px;
+}
+
+.grid-container > div {
+  /*background-color: rgba(255, 255, 255, 0.8);*/
+  text-align: center;
+  padding: 20px 0;
+  font-size: 15px;
+}
+/*Alignement des inputs */
+label {
+  width: 110px;
+  display: inline-block;
+  vertical-align: top;
+  margin: 6px;
+}
+input:focus {
+  background: #eaeaea;
+}
+input[type=number]{
+  width: 249px;
+}
+select {
+  width: 254px;
+}
+input[type=submit]{
+  background-color: aqua;
+}
+.div2{
+  background-color: rgb(230, 228, 228);
+}
+/* tableau  */
+table{
+  border-collapse: collapse;
+}
+
+th, td{
+  border: 1px solid black;
+  padding: 10px;
+}
+.bout{
+  display : flex;
+}
+.bout input{
+  margin : 5px;
+}
+form {
+  background-color: grey;
+}
+</style>
+</head>
+<body>
+<?php
+include_once('../connect_bd.php');
+if(isset($_POST['ajout'])){
+  
+  $mat = $_POST['mat'];
+  $ue  = $_POST['ue'];
+  $tp  = $_POST['tp'];
+  $cc  = $_POST['cc'];
+  $sn  = $_POST['sn'];
+  echo "$mat,$ue,$tp,$cc,$sn";
+
+  if(!empty( $_POST['mat']) && !empty($_POST['ue']) 
+  && !empty($_POST['tp']) && !empty($_POST['cc']) && !empty($_POST['sn'])  )
+  {
+
+      $requete = $dbco->prepare('INSERT INTO evaluer(id_etudiant,code_ue,tp,cc,sn) VALUES(:id,:ue,:tp,:cc,:sn)');
+      $requete->bindvalue(':id',$mat);
+      $requete->bindvalue(':ue',$ue);
+      $requete->bindvalue(':tp',$tp);
+      $requete->bindvalue(':cc',$cc);
+      $requete->bindvalue(':sn',$sn);
+      $result = $requete->execute();
+      if(!$result){
+          echo " un pb est survenu , l'enregistrement n'a pas été effectué .";
+      }else{
+          echo " <script type = \"text/javascript\"> alert('Vous etes bien enregistré.') </script>";
+      }
+      
+  }else{
+      echo "Tous les champs sont requis . ";
+  }
+}
+?>
+
+<p style="text-align : center;"> Gestion des notes des étudiants</p>
+<input type="submit" class="btn btn-primary btn-lg"  value="Consulter">
+        <div class="grid-container">
+            <div > 
+              <form action="note.php" method="post">
+                <label for="">Matricule</label>
+                <select name="mat">
+                <?php
+
+                $reponse = $dbco->query("SELECT id_etudiant,matricule  FROM `niveau` JOIN `etudiant`
+                ON niveau.id_fil = $a AND niveau.nom_niveau ='$b'
+                AND niveau.id_niveau = etudiant.id_niveau" );
+ 
+                while ($donnees = $reponse->fetch())
+                {
+                ?>
+                 <option value="<?php echo $donnees['id_etudiant']; ?>"> <?php echo $donnees['matricule']; ?></option>
+                <?php
+                  }
+ 
+                ?>
+              </select><br><br>
+
+                <label for="">Code_Ue</label>
+                <select name = "ue">
+                <?php
+
+                $reponse = $dbco->query("SELECT code_ue,libelle FROM `niveau` JOIN `semestre`
+                ON niveau.id_fil = $a AND niveau.nom_niveau ='$b'
+                AND niveau.id_niveau = semestre.id_niveau JOIN `matiere` 
+               ON semestre.nom_semestre = '$c' AND matiere.id_semestre = semestre.id_semestre" );
+ 
+                while ($donnees = $reponse->fetch())
+                {
+                ?>
+                 <option value="<?php echo $donnees['code_ue']; ?>"> <?php echo $donnees['libelle']; ?></option>
+                <?php
+                  }
+ 
+                ?>
+              </select><br><br>
+
+                <label for="">TP</label>
+                <input type="number" step="any" name ="tp"><br><br>
+
+                <label for="">CC</label>
+                <input type="number" step="any" name ="cc"><br><br>
+
+                <label for="">SN</label>
+                <input type="number" step="any" name ="sn" ><br><br>
+
+                <br><br>
+              <div class="bout">
+                <input type="submit" name="ajout" class="btn btn-primary btn-lg" value="Ajouter"><br><br>
+                <input type="submit" name="modif" class="btn btn-primary btn-lg"  value="Modifier"><br><br>
+                <input type="submit" name="suppr" class="btn btn-primary btn-lg"  value="Supprimer"><br><br>
+              </div>
+
+
+              </form>
+            </div>
+            <div class="div2"> 
+            <table class="table table-bordered table-dark">
+<thead>
+<tr>
+<th scope="col">Nom et Prenom </th>
+<th scope="col">Matricule</th>
+<th scope="col">Unité d'Enseignement(UE)</th>
+<th scope="col">TP</th>
+<th scope="col">CC</th>
+<th scope="col">SN</th>
+<th scope="col">Credit</th>
+</tr>
+</thead>
+<tbody>
+
+<?php
+
+$reponse = $dbco->query("SELECT nom,matricule  FROM `niveau` JOIN `etudiant`
+ON niveau.id_fil = $a AND niveau.nom_niveau ='$b'
+AND niveau.id_niveau = etudiant.id_niveau" );
+
+while ($donnees = $reponse->fetch())
+{
+?>
+<tr>
+<th scope="row"> <?php echo $donnees['nom']; ?></th>
+<td><?php echo $donnees['matricule']; ?></td>
+<td>Otto</td>
+<td>@mdo</td>
+<td>@mda</td>
+<td>@md</td>
+<td>@mdi</td>
+
+</tr>
+<?php
+  }
+
+?>
+
+
+</tbody>
+</table>
+            </div>
+        </div>
+
+
+</body>
+</html>
